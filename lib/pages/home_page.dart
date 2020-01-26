@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_time_flutter_design/components/movies_section.dart';
 import 'package:movie_time_flutter_design/components/search_box.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,12 +13,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Stack(
+          child: Column(
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.only(top: 30, left: 15, right: 15),
                 child: SearchBox(),
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+                child: MoviesSection()
+              ),
             ],
           ),
         ));
