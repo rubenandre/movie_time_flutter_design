@@ -32,22 +32,20 @@ class _PopularMoviesState extends State<PopularMovies> {
   }
   
   Widget __buildCardItem(Movie movie) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              child: ClipRRect(
-                child: Image.asset(movie.getImagePath, fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(5),
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            child: ClipRRect(
+              child: Image.asset(movie.getImagePath, fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(5),
             ),
           ),
-          SizedBox(height: 10,),
-          Text(movie.getTitle, style: TextStyle(color: Color(0xFF2e1656), fontSize: 19, fontWeight: FontWeight.w400),)
-        ],
-      ),
+        ),
+        SizedBox(height: 10,),
+        Text(movie.getTitle, style: TextStyle(color: Color(0xFF2e1656), fontSize: 19, fontWeight: FontWeight.w400),)
+      ],
     );
   }
 }
