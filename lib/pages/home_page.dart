@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_time_flutter_design/components/menu_info.dart';
 import 'package:movie_time_flutter_design/components/movies_section.dart';
+import 'package:movie_time_flutter_design/components/popular_movies_caroussel.dart';
 import 'package:movie_time_flutter_design/components/search_box.dart';
+import 'package:movie_time_flutter_design/model/Movie.dart';
+import 'package:movie_time_flutter_design/model/MoviesCollection.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,32 +13,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  MoviesCollection __collection = MoviesCollection();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
-          child: Column(
-            children: <Widget>[
-              // Search Box Component
-              Padding(
-                padding: EdgeInsets.only(top: 30, left: 18, right: 18),
-                child: SearchBox(),
-              ),
-              // Movies Section List View Horizontal
-              Padding(
-                  padding: EdgeInsets.only(top: 30, left: 18, right: 18),
-                  child: MoviesSection()),
-              // Popular Movies Text
-              Padding(
-                  padding: EdgeInsets.only(top: 30, left: 18, right: 18),
-                  child: MenuInfo('Popular Movies')),
-              Padding(
-                  padding: EdgeInsets.only(top: 30, left: 18, right: 18),
-                  child: MenuInfo('New Movies')),
-              // New Movies
-            ],
-          ),
+          child: Padding(
+            padding: EdgeInsets.only(top: 30, left: 18, right: 18, bottom: 30),
+            child: Column(
+              children:<Widget>[
+                SearchBox(),
+                SizedBox(height: 30),
+                MoviesSection(),
+                SizedBox(height: 30),
+                MenuInfo('Popular Movies'),
+                SizedBox(height: 15),
+                PopularMovies(__collection.getAllMovies()),
+                SizedBox(height: 15),
+                MenuInfo('New Movies')
+              ]
+            ),
+          )
         ));
   }
 }
